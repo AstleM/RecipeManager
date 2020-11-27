@@ -1,0 +1,50 @@
+openapi: '3.0.2'
+info:
+  title: Recipe
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /recipes:
+    post:
+      summary: Create a recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Pasta Bake"
+                description:
+                  type: string
+                  example: "Tuna and pasta baked in a cheesy sauce"
+                ingredients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: "Pasta"
+                      amount:
+                        type: string
+                        example: "500g"
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      stepNumber:
+                        type: number
+                        format: integer
+                        example: 1
+                        description: The index of the step
+                      description:
+                        type: string
+                        example: "Boil the pasta for 10 minutes"
+                      
+      responses:
+        '201':
+          description: OK
